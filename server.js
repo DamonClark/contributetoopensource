@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.use(express.static(__dirname + '/dist/contribute-to-opensource'));
+app.use(express.static(__dirname + '/dist/my-open-source-project'));
 app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+
-'/dist/contribute-to-opensource/index.html'));});
+'/dist/my-open-source-project/index.html'));});
 app.listen(process.env.PORT || 8080);
