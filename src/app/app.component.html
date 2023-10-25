@@ -1,5 +1,6 @@
-<h1>Contribute to Open Source</h1>
 <mat-card>
+  <h1>Contribute to Open Source</h1>
+
   <mat-card-header>
     <mat-card-title>Search Panel</mat-card-title>
   </mat-card-header>
@@ -43,7 +44,7 @@
   <mat-card-content>
     <div *ngIf="responseData"> 
       <div *ngFor="let repoGroup of groupedResults | keyvalue">
-        <h2>Status: {{ repoGroup.key }}</h2>
+        <h2 class="results">Status: {{ repoGroup.key }}</h2>
         <mat-card *ngFor="let result of repoGroup.value | paginate: {
           itemsPerPage: '1',
           currentPage: page,
