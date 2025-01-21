@@ -17,12 +17,12 @@ export class AppComponent {
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
-  
+
   constructor(private appService: AppService) {}
 
   groupedResults: { [repository_url: string]: any[] } = {};
 
-  
+
   getGithubData() {
     this.url = 'https://api.github.com/search/issues?q=label:' + this.labels + '+no:assignee\
     +language:' + this.language +'+state:open&sort=created&order=desc&page=' + this.page + ''

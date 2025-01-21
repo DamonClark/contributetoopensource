@@ -1,40 +1,25 @@
-@media screen and (max-width: 600px) {
-  mat-card {
-    width: 300px;
-    justify-content: center;
-    margin: auto;
-  }
+:root {
+  --primary-color: #1d4ed8;
+  --secondary-color: #f97316;
+  --neutral-color: #f3f4f6;
 }
 
-h1 {
-  font-size: 32px;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-	padding: 10px;
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
 }
 
-mat-card {
-  margin: 10px;
+h1,
+h2,
+h3 {
+  font-family: 'Roboto Slab', serif;
 }
 
-mat-card-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.hero {
+  background: linear-gradient(45deg, #1d4ed8, #2563eb);
 }
 
-mat-form-field { 
-	padding: 10px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.pagination-control {
-  float: right;
-}
-
-.page-size {
-  float: right;
+.section {
+  padding: 2rem 1rem;
+  margin: 1rem 0;
 }

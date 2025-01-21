@@ -1,0 +1,75 @@
+<mat-card class="bg-white shadow-lg rounded-lg p-6">
+  <h1 class="text-2xl font-semibold text-center mb-6">Contribute to Open Source</h1>
+
+  <mat-card-header>
+    <mat-card-title class="text-xl font-bold">Search Panel</mat-card-title>
+  </mat-card-header>
+
+  <mat-grid-list cols="3" gutterSize="16px">
+    <mat-card-content class="space-y-6">
+
+      <!-- Labels -->
+      <mat-form-field class="w-full">
+        <mat-label class="text-sm font-medium">Github Labels</mat-label>
+        <mat-select [(ngModel)]="labels" multiple class="border-gray-300 rounded-md p-2">
+          <mat-option value="help-wanted">Help Wanted</mat-option>
+          <mat-option value="good-first-issue">Good First Issue</mat-option>
+          <mat-option value="easy">Easy</mat-option>
+          <mat-option value="beginner">Beginner</mat-option>
+          <mat-option value="easy-fix">Easy Fix</mat-option>
+          <mat-option value="starter">Starter</mat-option>
+          <mat-option value="good-for-beginner">Good for Beginner</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Programming Language -->
+      <mat-form-field class="w-full">
+        <mat-label class="text-sm font-medium">Programming Language</mat-label>
+        <mat-select [(ngModel)]="language" multiple class="border-gray-300 rounded-md p-2">
+          <mat-option value="JavaScript">JavaScript</mat-option>
+          <mat-option value="TypeScript">TypeScript</mat-option>
+          <mat-option value="Ruby">Ruby</mat-option>
+          <mat-option value="Python">Python</mat-option>
+          <mat-option value="Go">Go</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="bg-blue-500 text-white px-4 py-2 rounded-lg" (click)="getGithubData()">
+        Search Github Issues
+      </button>
+    </mat-card-actions>
+  </mat-grid-list>
+</mat-card>
+
+<mat-card class="bg-white shadow-lg rounded-lg p-6 mt-8">
+  <mat-card-content>
+    <div *ngIf="responseData" class="space-y-4">
+      <div *ngFor="let repoGroup of groupedResults | keyvalue">
+        <h2 class="text-lg font-semibold text-blue-600">Status: {{ repoGroup.key }}</h2>
+        <mat-card *ngFor="let result of repoGroup.value | paginate: { itemsPerPage: '1', currentPage: page, totalItems: count }" class="bg-gray-50 rounded-md shadow-md p-4">
+          <mat-card-content>
+            <h3 class="text-xl font-semibold text-gray-900">{{ result.title }}</h3>
+            <p class="mt-2 text-gray-700">{{ result.body }}</p>
+            <p class="mt-4">
+              Visit: <a href="{{ result.html_url }}" target="_blank" class="text-blue-500 hover:text-blue-700"> {{ result.html_url }} </a>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-content>
+    <div class="pagination-control mt-6">
+      <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        [responsive]="true"
+        (pageChange)="handlePageChange($event)"
+        class="flex justify-center space-x-4"
+      ></pagination-controls>
+    </div>
+  </mat-card-content>
+</mat-card>
